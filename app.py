@@ -27,7 +27,7 @@ st.markdown("""
     background: linear-gradient(90deg, #4F46E5, #7C3AED);
     color: white;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 .card {
@@ -39,6 +39,14 @@ st.markdown("""
     color: #111827;
     line-height: 1.7;
 }
+.section-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 18px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.06);
+    margin-bottom: 20px;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -49,31 +57,47 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+### 🎯 Build Professional ATS-Friendly Resumes in Seconds
+Generate internship-ready resumes powered by Gemini AI, evaluate ATS strength, and export instantly as PDF.
+""")
+
 st.sidebar.title("📌 Project Info")
 st.sidebar.success("Python")
 st.sidebar.success("Streamlit")
 st.sidebar.success("Gemini API")
 st.sidebar.success("ReportLab PDF")
-st.sidebar.info("Generate resume, check ATS score, and download PDF.")
+st.sidebar.info(
+    "✨ Generate AI-powered resumes\n\n"
+    "📊 ATS Score Analysis\n\n"
+    "📄 PDF Export\n\n"
+    "🚀 Internship Ready Format"
+)
 
 theme = st.sidebar.radio("Choose Resume Style", ["Modern", "Minimal", "Professional"])
 
 col1, col2 = st.columns(2)
 
 with col1:
+    st.markdown('<div class="section-box">', unsafe_allow_html=True)
     st.markdown("### 👤 Personal Details")
-    name = st.text_input("Full Name")
-    email = st.text_input("Email")
-    phone = st.text_input("Phone Number")
-    linkedin = st.text_input("LinkedIn URL")
-    github = st.text_input("GitHub URL")
+
+    name = st.text_input("Full Name", placeholder="Rana Yash Raj Pratap Singh")
+    email = st.text_input("Email", placeholder="rana.yash2025@vitstudent.ac.in")
+    phone = st.text_input("Phone Number", placeholder="9876543210")
+    linkedin = st.text_input("LinkedIn URL", placeholder="https://www.linkedin.com/in/your-profile")
+    github = st.text_input("GitHub URL", placeholder="https://github.com/your-username")
     photo = st.file_uploader("Upload Profile Photo", type=["jpg", "png", "jpeg"])
 
     if photo:
         st.image(photo, width=140)
 
+    st.markdown("</div>", unsafe_allow_html=True)
+
 with col2:
+    st.markdown('<div class="section-box">', unsafe_allow_html=True)
     st.markdown("### 🎯 Resume Details")
+
     role = st.selectbox(
         "Target Role",
         [
@@ -85,12 +109,43 @@ with col2:
         ]
     )
 
-    education = st.text_area("Education")
-    skills = st.text_area("Technical Skills")
-    projects = st.text_area("Projects")
-    experience = st.text_area("Experience / Internship / Certificates")
-    achievements = st.text_area("Achievements")
-    career_goal = st.text_area("Career Goal")
+    education = st.text_area(
+        "Education",
+        height=120,
+        placeholder="B.Tech CSE (Data Science), VIT Vellore\nCGPA: 8.56\nExpected Graduation: 2029"
+    )
+
+    skills = st.text_area(
+        "Technical Skills",
+        height=120,
+        placeholder="Python, C++, SQL, Data Structures, Streamlit, GitHub, Machine Learning Basics"
+    )
+
+    projects = st.text_area(
+        "Projects",
+        height=120,
+        placeholder="AI Resume Builder using Python, Streamlit, Gemini API, and ReportLab"
+    )
+
+    experience = st.text_area(
+        "Experience / Internship / Certificates",
+        height=120,
+        placeholder="Forage Virtual Experience Programs, Google AI Certification"
+    )
+
+    achievements = st.text_area(
+        "Achievements",
+        height=100,
+        placeholder="Built and deployed AI Resume Builder on Streamlit Cloud"
+    )
+
+    career_goal = st.text_area(
+        "Career Goal",
+        height=100,
+        placeholder="Seeking software development and AI internship opportunities..."
+    )
+
+    st.markdown("</div>", unsafe_allow_html=True)
 
 
 def calculate_ats_score(skills, projects, education, experience, achievements):
@@ -190,6 +245,7 @@ if st.button("✨ Generate Professional Resume"):
         - Make it suitable for an incoming second-year B.Tech CSE Data Science student.
         - Do not add fake achievements.
         - Use strong but realistic resume language.
+        - Make project descriptions impressive but truthful.
         - Keep the format recruiter-friendly and ATS-friendly.
         """
 
@@ -232,6 +288,6 @@ if st.button("✨ Generate Professional Resume"):
 
 st.markdown("---")
 st.markdown(
-    "<p style='text-align:center;'>Built with ❤️ using Python, Streamlit, Gemini API and ReportLab</p>",
+    "<p style='text-align:center;'>Built by Rana Yash Raj Pratap Singh • Python • Streamlit • Gemini API • ReportLab</p>",
     unsafe_allow_html=True
 )
