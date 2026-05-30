@@ -5,7 +5,7 @@ from reportlab.pdfgen import canvas
 from io import BytesIO
 
 # Paste your Gemini API key here
-API_KEY = ""
+API_KEY = st.secrets["GEMINI_API_KEY"]
 
 genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel("gemini-2.5-flash")
